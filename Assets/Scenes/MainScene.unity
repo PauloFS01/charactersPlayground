@@ -2075,6 +2075,7 @@ GameObject:
   - component: {fileID: 5336793197416138694}
   - component: {fileID: 5336793197416138695}
   - component: {fileID: 5336793197416138696}
+  - component: {fileID: 5336793197416138697}
   m_Layer: 0
   m_Name: Player-brige-animated
   m_TagString: Untagged
@@ -2144,6 +2145,20 @@ MonoBehaviour:
   speed: 4
   gravit: 50
   rotSpeed: 200
+--- !u!114 &5336793197416138697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5336793197416138693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3989ae812142574b8b03db0f7714b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceleration: 2
+  deceleration: 2
 --- !u!4 &5370667132772933130
 Transform:
   m_ObjectHideFlags: 0
