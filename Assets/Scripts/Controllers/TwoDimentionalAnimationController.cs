@@ -22,7 +22,7 @@ public class TwoDimentionalAnimationController : MonoBehaviour
         bool rightPressed = Input.GetKey("d");
         bool rundPressed = Input.GetKey("left shift");
 
-        float currentMaximumVelocity = rundPressed ? maximumWalkVelocity : maximumRunVelocity;
+        float currentMaximumVelocity = rundPressed ?  maximumRunVelocity : maximumWalkVelocity;
 
         //acceleration 
 
@@ -71,16 +71,56 @@ public class TwoDimentionalAnimationController : MonoBehaviour
         else if (forwardPressed && velocityZ > currentMaximumVelocity)
         {
             velocityZ -= Time.deltaTime * deceleration;
-            if(velocityZ > currentMaximumVelocity && velocityX < (currentMaximumVelocity + 0.5f) ) 
+            if(velocityZ > currentMaximumVelocity && velocityZ < (currentMaximumVelocity + 0.05f) ) 
             {
                 velocityZ = currentMaximumVelocity;
             }
         }
-        else if(forwardPressed && velocityZ < currentMaximumVelocity && velocityZ > (currentMaximumVelocity - 0.5f))
+        else if(forwardPressed && velocityZ < currentMaximumVelocity && velocityZ > (currentMaximumVelocity - 0.05f))
         {
             velocityZ = currentMaximumVelocity;
         }
-        //18:59
+
+        //loking left
+        if (leftPressed && rundPressed && velocityX < -currentMaximumVelocity)
+        {
+            velocityX = -currentMaximumVelocity;
+        }
+        // maximum left walk velocity
+        else if (leftPressed && velocityX < -currentMaximumVelocity)
+        {
+            velocityX += Time.deltaTime * deceleration;
+            if (velocityX < -currentMaximumVelocity && velocityX > (-currentMaximumVelocity - 0.05f))
+            {
+                velocityX = -currentMaximumVelocity;
+            }
+        }
+        //round current velocity
+        else if (leftPressed && velocityX > -currentMaximumVelocity && velocityX < (-currentMaximumVelocity + 0.05f))
+        {
+            velocityX = -currentMaximumVelocity;
+        }
+
+        // loking right
+        if(rightPressed && rundPressed && velocityX > currentMaximumVelocity)
+        {
+            velocityX = -currentMaximumVelocity;
+        }
+        // maximum right walk velocity
+        else if(rightPressed && velocityX > currentMaximumVelocity)
+        {
+            velocityX -= Time.deltaTime * deceleration;
+            if(velocityX > currentMaximumVelocity && velocityX < (currentMaximumVelocity + 0.05))
+            {
+                velocityX = currentMaximumVelocity;
+            }
+        }
+        // round maximum velocity
+        else if(rightPressed && velocityX < currentMaximumVelocity && velocityX > (currentMaximumVelocity - 0.05f))
+        {
+            velocityX = currentMaximumVelocity;
+        }
+
         myAnimator.SetFloat("velocity z", velocityZ);
         myAnimator.SetFloat("velocity x", velocityX);
     }
